@@ -1,3 +1,3 @@
-module github.com/nlsrmll
+module github.com/nlsrmll/logger
 
 go 1.20
