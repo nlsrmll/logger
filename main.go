@@ -24,8 +24,8 @@ func (l *Logger) Log(s string) error {
 	return l.writeNewLine(s)
 }
 
-func (l *Logger) Error(s string) error {
-	return l.writeNewLine(fmt.Sprintf("ERROR: %s", s))
+func (l *Logger) Error(a ...any) error {
+	return l.writeNewLine(fmt.Sprintf("ERROR: %s", a))
 }
 
 func (l *Logger) open() error {
