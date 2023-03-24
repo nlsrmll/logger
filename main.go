@@ -20,12 +20,24 @@ func OpenFile(path string) (*Logger, error) {
 	return logger, nil
 }
 
-func (l *Logger) Log(s string) error {
-	return l.writeNewLine(s)
+func (l *Logger) Debug(s string) error {
+	return l.writeNewLine(fmt.Sprintf(" DEBUG: %s", s))
+}
+
+func (l *Logger) Info(s string) error {
+	return l.writeNewLine(fmt.Sprintf(" INFO: %s", s))
+}
+
+func (l *Logger) Warning(s string) error {
+	return l.writeNewLine(fmt.Sprintf(" WARNING: %s", s))
 }
 
 func (l *Logger) Error(e error) error {
-	return l.writeNewLine(fmt.Sprintf("ERROR: %s", e.Error()))
+	return l.writeNewLine(fmt.Sprintf(" ERROR: %s", e.Error()))
+}
+
+func (l *Logger) Fatal(e error) error {
+	return l.writeNewLine(fmt.Sprintf(" FATAL: %s", e.Error()))
 }
 
 func (l *Logger) open() error {
